@@ -1,0 +1,20 @@
+1. ImageDataTextPrinter에서 make
+
+2. ImageDataTextPrinter/bin/imageDataTextPrinter.bin
+을 임베디드보드로 전송
+
+3. 다음과 같은 명령어를 실행하여 영상 데이터 텍스트파일을 생성
+./imageDataTextPrinter > dataFile.txt
+
+4. dataFile.txt를 ftp 또는 minicom 연결로 다운로드
+
+5. 텍스트파일을 JS_ImageShow에서 사용할 수 있도록
+"JS_Imageshow/reformData.sh inputFilename outputFilename" 형태로 명령어를 실행하여 reformmattingqhrtqndps
+
+6. JS_ImageShow의 HTML파일을 Chrome에서 실행하고 F12를 눌러 개발자 콘솔을 연다
+
+7. a = [ 까지 타이핑한 후
+reformmating한 파일 내용 복사하여 붙여넣기하고 끝에 붙은 쉼표 지우고
+] 대괄호를 닫고 엔터
+
+8. showImage(a) 엔터 후 약 15초간 기다린다

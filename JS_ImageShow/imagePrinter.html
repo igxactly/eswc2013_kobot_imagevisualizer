@@ -1,0 +1,95 @@
+<html>
+<head>
+	
+
+	<script type='text/javascript'>
+	
+
+	
+	</script>
+</head>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title></title>
+	
+	<script type='text/javascript' src='./tinycolor.js'>
+	</script>
+	
+	<style type='text/css'>
+	
+	</style>
+	
+
+
+	<script type='text/javascript'>//<![CDATA[ 
+	window.onload=function(){
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+
+		//Background
+		context.fillStyle = "#000";
+		context.fillRect(0, 0, canvas.width, canvas.height);
+
+		// canvas.addEventListener("mousedown", function(e) {
+		// 	var x = e.x - 8;
+		// 	var y = e.y - 8;
+
+		// 	console.log(x);
+		// 	console.log(y);
+		// 	//Zoomed in red 'square'
+		// 	context.fillStyle = "#F00";
+		// 	context.fillRect(x, y, 1, 1);
+		// }, true);
+	}
+	function showImage(a) {
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		for (var i = 0; i < canvas.height; i++) {
+			for (var j = 0; j < canvas.width; j++) {
+				var h = a.shift();
+				var s = a.shift();
+				var v = a.shift();
+
+				var hsvStr = 'hsv(';
+				hsvStr += h;
+				hsvStr += ',';
+				hsvStr += s;
+				hsvStr += ',';
+				hsvStr += v;
+				hsvStr += ')';
+				
+				// console.log(hsvStr);
+				var tColor = tinycolor(hsvStr);
+
+				delete h;
+				delete s;
+				delete v;
+				delete hsvStr;
+
+				var colorStr = tColor.toHexString();
+				delete tColor;
+				
+				// console.log(colorStr);
+				context.fillStyle = colorStr;
+				context.fillRect(j, i, 1, 1);
+
+				delete colorStr;
+			};
+		};
+	}
+	//]]>
+	</script>
+
+
+</head>
+<body>
+	<canvas id="canvas" style="width:640px; height:480px" width="320" height="240"></canvas>
+	
+</body>
+
+
+</html>
+
